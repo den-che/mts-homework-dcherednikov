@@ -1,6 +1,6 @@
 package HW_1;
 
-public abstract class AbstractAnimal {
+public abstract class AbstractAnimal implements Animal {
     private String breed;
     private String name;
     private Double cost;
