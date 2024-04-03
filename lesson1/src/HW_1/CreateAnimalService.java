@@ -4,7 +4,7 @@ import java.sql.Array;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public interface CreateAnimalService {
+public interface CreateAnimalService{
     String[] animalsClass = new String[]{"Cat", "Dog", "Shark", "Wolf"};
     String[] catNames = new String[]{"муська", "дуська", "паштет", "барсик"};
     String[] catBreed = new String[]{"британская", "бирманская", "бенгальская", "абиссинская"};
@@ -14,7 +14,7 @@ public interface CreateAnimalService {
     String [] sharkBreed = new String[]{"Тигровая","Молот","Китовая","Большая белая"};
     String [] area = new String[]{"океан","лес","пустыня"};
     String [] wolfBreed = new String[]{"степной","красный","тасманский сумчатый","гривистый"};
-    default void createAnimal() {
+    default void createAnimal() throws InvalidAnimalBirthDateException {
         int count = 0;
 
         while (count < 10 ){

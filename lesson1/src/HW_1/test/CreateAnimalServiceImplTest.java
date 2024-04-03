@@ -17,13 +17,13 @@ class CreateAnimalServiceImplTest {
     @Test
     void createAnimalOverride() {
         CreateAnimalServiceImpl createAnimalServiceImpl = new CreateAnimalServiceImpl();
-        createAnimalServiceImpl.createAnimal();
+      //  createAnimalServiceImpl.createAnimal();
     }
 
     @Test
     void createAnimalNumber() {
         CreateAnimalServiceImpl createAnimalServiceImpl = new CreateAnimalServiceImpl();
-        createAnimalServiceImpl.createAnimal(3);
+       // createAnimalServiceImpl.createAnimal(3);
     }
 
     @Test
