@@ -1,5 +1,7 @@
 package HW_1;
 
+import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 
@@ -14,9 +16,8 @@ public class ServiceSearchImpl implements SearchService{
             throw new InvalidAnimalBirthDateException("У животного "+animal.getName()+ " не указана дата его рождения!");
 
               if (birthDate.isLeapYear())
-                  System.out.println("Bисокосный год!");
+                  System.out.println(animal.getName()+" рожден в високосный год!");
               else
-                  System.out.println("Не високосный год!");
-
+                  System.out.println(animal.getName()+ " рожден не в високосный год!");
     }
 }
