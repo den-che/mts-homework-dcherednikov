@@ -1,35 +1,40 @@
 package HW_1.test;
 
 import HW_1.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.Mockito.*;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.junit.jupiter.api.Assertions.*;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
 class CreateAnimalServiceImplTest {
+    CreateAnimalServiceImpl createAnimalServiceImpl = new CreateAnimalServiceImpl();
+
     @Test
-    void createAnimalOverride() {
-        CreateAnimalServiceImpl createAnimalServiceImpl = new CreateAnimalServiceImpl();
-      //  createAnimalServiceImpl.createAnimal();
+    @DisplayName("Проверяем создание животных в Override")
+    void createAnimalOverride() throws InvalidAnimalBirthDateException {
+        int countAnimals = 1;
+
+        List<AbstractAnimal> animalsList= new ArrayList<>();
+        Map<String, List<AbstractAnimal>> animals = createAnimalServiceImpl.createAnimal();
+        for (String key : animals.keySet()){
+            animalsList.addAll(animals.get(key));
+        }
+        assertEquals(5,animalsList.size());
     }
 
     @Test
-    void createAnimalNumber() {
-        CreateAnimalServiceImpl createAnimalServiceImpl = new CreateAnimalServiceImpl();
-       // createAnimalServiceImpl.createAnimal(3);
-    }
-
-    @Test
-    void checkLeapYearAnimalTest() {
-        ServiceSearchImpl serviceSearchImpl = new ServiceSearchImpl();
-        AbstractAnimal wolfTest = new Wolf("волк", LocalDate.of(2022,1,8),"степной","опасный","степнь");
-
+    @DisplayName("Проверяем создание N количества животных")
+    void createAnimalWithNumber() throws InvalidAnimalBirthDateException {
+        List<AbstractAnimal> animalsList= new ArrayList<>();
+        Map<String, List<AbstractAnimal>> animals = createAnimalServiceImpl.createAnimal(3);
+        for (String key : animals.keySet()){
+            animalsList.addAll(animals.get(key));
+        }
+        assertEquals(3,animalsList.size());
     }
 }
