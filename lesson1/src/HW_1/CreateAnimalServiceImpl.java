@@ -6,9 +6,9 @@ import java.util.*;
 public class CreateAnimalServiceImpl implements CreateAnimalService{
     LocalDate birthdate = LocalDate.of(2021,1,8);
     LocalDate birthdate2 = LocalDate.of(2020,1,8);
-    HashMap<String, List<AbstractAnimal>> animals = new HashMap<>();
-    String keyVal = "";
+
     public HashMap<String, List<AbstractAnimal>> createAnimal(int num) throws InvalidAnimalBirthDateException {
+        HashMap<String, List<AbstractAnimal>> animals = new HashMap<>();
         for (int idx = 0; idx < num; idx++) {
             List<AbstractAnimal> animalList = new ArrayList<>();
             AbstractAnimal objectName = null;
@@ -26,21 +26,11 @@ public class CreateAnimalServiceImpl implements CreateAnimalService{
                 objectName = new Wolf("волк", birthdate2,wolfBreed[(int) (Math.random() * wolfBreed.length)],area[(int) (Math.random() * area.length)],  characters[(int) (Math.random() * characters.length)]);
             }
 
-            if(animals.size() > 0) {
-                for (String key : animals.keySet()) {
-                    keyVal = objValue;
-                    if (objValue.equals(key)){
-                        animalList = animals.get(objValue);
-                        break;
-                    }
-                }
-                animalList.add(animalList.size(), objectName);
-                animals.put(keyVal,animalList);
+            if (animals.containsKey(objValue)){
+                animalList = animals.get(objValue);
             }
-            else {
-                animalList.add(0, objectName);
-                animals.put(objValue, animalList);
-            }
+            animalList.add(objectName);
+            animals.put(objValue,animalList);
 
             ServiceSearchImpl serviceSearch = new ServiceSearchImpl();
             try{
@@ -55,7 +45,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService{
     @Override
     public HashMap<String, List<AbstractAnimal>> createAnimal() throws InvalidAnimalBirthDateException {
         int count = 0;
-
+        HashMap<String, List<AbstractAnimal>> animals = new HashMap<>();
         do {
             List<AbstractAnimal> animalList = new ArrayList<>();
             AbstractAnimal objectName = null;
@@ -73,24 +63,13 @@ public class CreateAnimalServiceImpl implements CreateAnimalService{
             else if (Objects.equals("Wolf",objValue)) {
                 objectName = new Wolf("волк", birthdate,wolfBreed[(int) (Math.random() * wolfBreed.length)],area[(int) (Math.random() * area.length)],  characters[(int) (Math.random() * characters.length)]);
             }
-            objectName.printAnimal();
-
             count++;
-            if(animals.size() > 0) {
-                for (String key : animals.keySet()) {
-                    keyVal = objValue;
-                    if (objValue.equals(key)){
-                        animalList = animals.get(objValue);
-                        break;
-                    }
-                }
-                animalList.add(animalList.size(), objectName);
-                animals.put(keyVal,animalList);
+
+            if (animals.containsKey(objValue)){
+                animalList = animals.get(objValue);
             }
-            else {
-                animalList.add(0, objectName);
-                animals.put(objValue, animalList);
-            }
+            animalList.add(objectName);
+            animals.put(objValue,animalList);
 
             ServiceSearchImpl serviceSearch = new ServiceSearchImpl();
             try{

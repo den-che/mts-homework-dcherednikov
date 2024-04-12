@@ -13,22 +13,7 @@ import java.util.List;
 
 public class AnimalRepositoryImpl implements AnimalRepository {
 
-    private List<AbstractAnimal> animalsList = new ArrayList<>();
-
-    public void createAnimalList(Map<String, List<AbstractAnimal>> animals){
-        for(String key : animals.keySet()){
-            animalsList.addAll(animals.get(key));
-         }
-    }
-    public void addList (AbstractAnimal animal){
-        animalsList.add(animal);
-    }
-
-    public void clear(){
-        animalsList.clear();
-    }
-
-    public Map<String, LocalDate> findLeapYearsName(){
+    public Map<String, LocalDate> findLeapYearsName(List<AbstractAnimal> animalsList){
         Map <String, LocalDate> leapYearsNames = new HashMap<>();
             for(AbstractAnimal objVal : animalsList){
                 if (objVal.getBirthDate().isLeapYear()){
@@ -38,7 +23,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
         return leapYearsNames;
     }
 
-    public Map<AbstractAnimal, Integer> findOlderAnimal(int num) {
+    public Map<AbstractAnimal, Integer> findOlderAnimal(List<AbstractAnimal> animalsList,int num) {
         Map<AbstractAnimal, Integer> olderAnimals = new HashMap<>();
         Map<AbstractAnimal, Integer> maxAgeAnimals = new HashMap<>();
 
@@ -64,7 +49,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
         return olderAnimals;
     }
 
-    public Map<String, Integer> findDuplicate() {
+    public Map<String, Integer> findDuplicate(List<AbstractAnimal> animalsList) {
         if (animalsList.size() == 0 || animalsList == null)
             throw new EmptyAnimalMapException();
 

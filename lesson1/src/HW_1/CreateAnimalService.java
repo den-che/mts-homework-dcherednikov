@@ -17,15 +17,12 @@ public interface CreateAnimalService{
     String [] sharkBreed = new String[]{"Тигровая","Молот","Китовая","Большая белая"};
     String [] area = new String[]{"океан","лес","пустыня"};
     String [] wolfBreed = new String[]{"степной","красный","тасманский сумчатый","гривистый"};
-    String keyVal = "";
-    HashMap<String, List<AbstractAnimal>> animals = new HashMap<>();
 
     default HashMap<String, List<AbstractAnimal>> createAnimal() throws InvalidAnimalBirthDateException {
-        List<AbstractAnimal> animalList = new ArrayList<>();
         int count = 0;
-        String keyVal = "";
-
+        HashMap<String, List<AbstractAnimal>> animals = new HashMap<>();
         while (count < 10 ){
+            List<AbstractAnimal> animalList = new ArrayList<>();
             AbstractAnimal objectName = null;
             String objValue = animalsClass[(int) Math.round(Math.random() * (animalsClass.length-1))];
             LocalDate birthdate = LocalDate.of(2020,1,8);
@@ -45,20 +42,11 @@ public interface CreateAnimalService{
 
             count++;
 
-            if (animals.size() > 0) {
-                for (String key : animals.keySet()) {
-                    keyVal = objValue;
-                    if (objValue.equals(key)) {
-                        animalList = animals.get(objValue);
-                        break;
-                    }
-                }
-                animalList.add(animalList.size(), objectName);
-                animals.put(keyVal, animalList);
-            } else {
-                animalList.add(0, objectName);
-                animals.put(objValue, animalList);
+            if (animals.containsKey(objValue)){
+                animalList = animals.get(objValue);
             }
+            animalList.add(objectName);
+            animals.put(objValue,animalList);
         }
         return animals;
     }

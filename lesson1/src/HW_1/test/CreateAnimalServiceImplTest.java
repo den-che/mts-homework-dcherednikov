@@ -21,7 +21,6 @@ class CreateAnimalServiceImplTest {
 
         List<AbstractAnimal> animalsList= new ArrayList<>();
         Map<String, List<AbstractAnimal>> animals = createAnimalServiceImpl.createAnimal();
-        System.out.print(animals);
         for (String key : animals.keySet()){
             animalsList.addAll(animals.get(key));
         }
@@ -33,11 +32,9 @@ class CreateAnimalServiceImplTest {
     void createAnimalWithNumber() throws InvalidAnimalBirthDateException {
         List<AbstractAnimal> animalsList= new ArrayList<>();
         Map<String, List<AbstractAnimal>> animals = createAnimalServiceImpl.createAnimal(3);
-        System.out.print(animals);
         for (String key : animals.keySet()){
             animalsList.addAll(animals.get(key));
         }
-        System.out.println("\n"+animalsList.size());
         assertEquals(3,animalsList.size());
     }
 }

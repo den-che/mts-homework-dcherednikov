@@ -5,8 +5,7 @@ import java.util.Map;
 import java.util.List;
 
 public interface AnimalRepository {
-    Map<String, LocalDate> findLeapYearsName();
-    Map<AbstractAnimal,Integer> findOlderAnimal(int num);
-    Map<String, Integer> findDuplicate();
-    void createAnimalList(Map<String, List<AbstractAnimal>> animals);
+    Map<String, LocalDate> findLeapYearsName(List<AbstractAnimal> animalsList);
+    Map<AbstractAnimal,Integer> findOlderAnimal(List<AbstractAnimal> animalsList, int num);
+    Map<String, Integer> findDuplicate(List<AbstractAnimal> animalsList);
 }
