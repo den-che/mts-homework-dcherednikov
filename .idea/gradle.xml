@@ -4,10 +4,13 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/lesson1" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/homework" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/lesson1" />
+            <option value="$PROJECT_DIR$/homework" />
+            <option value="$PROJECT_DIR$/homework/src" />
+            <option value="$PROJECT_DIR$/homework/src/main" />
+            <option value="$PROJECT_DIR$/homework/src/main/ru.mts.homeworks" />
           </set>
         </option>
       </GradleProjectSettings>
