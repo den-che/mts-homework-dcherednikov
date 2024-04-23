@@ -38,16 +38,10 @@ public class AnimalApplication{
         Map<String, List<AbstractAnimal>> duplicates = animalRepositoryImpl.findDuplicate(animalsList);
         System.out.println("Количество дубликатов животных: \n"+duplicates);
 
-        System.out.println("Средний возраст всех животных равен "+animalRepositoryImpl.findAverageAge(animalsList));
-        List<AbstractAnimal> animalNew = animalRepositoryImpl.findOlderAndExpensive(animalsList);
-        System.out.println(animalRepositoryImpl.findOlderAndExpensive(animalsList));
-        for (AbstractAnimal animal: animalNew) {
-            System.out.println(animal.getName()+"  "+animal.getBirthDate());
-        }
+        System.out.println("Средний возраст всех животных равен\n"+animalRepositoryImpl.findAverageAge(animalsList));
 
-        List<AbstractAnimal> animalNew2 = animalRepositoryImpl.findMinConstAnimals(animalsList);
-        for (AbstractAnimal animal: animalNew2) {
-            System.out.println(animal.getName()+"  "+animal.getBirthDate()+" "+animal.getCost());
-        }
+        System.out.println("Животные которые старше и дороже\n"+animalRepositoryImpl.findOlderAndExpensive(animalsList));
+
+        System.out.println("Животное с минимальной стоимость\n"+animalRepositoryImpl.findMinConstAnimals(animalsList));
     }
 }
